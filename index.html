@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sport Club</title>
+    <link rel="icon" type="image/png" href="./img/icon2.png">
+    <link rel="stylesheet" href="./css/index_styles.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="nav-left">
+            <a href="./landing_page.html">Inicio</a>
+            <a href="./contacto.html">Contacto</a>
+        </div>
+
+        <div class="nav-right">
+            <button onclick="window.location.href='./login.html'">
+                Iniciar sesión
+            </button>
+            <button onclick="logout()">Cerrar sesión</button>
+
+        <script>
+            function logout(){
+                localStorage.removeItem("user");
+                window.location.href = "login.html";
+            }
+</script>
+        </div>
+    </nav>
+
+    <header>
+        <div class="logo">
+            <img src="./img/logo_empresa_letra_v1.png" alt="Logo Sport Club">
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <h1>Tu mejor versión comienza hoy</h1>
+
+            <p>
+                En SportClub creemos que el deporte no solo transforma el cuerpo,
+                sino también la mente y el estilo de vida.
+            </p>
+
+            <h2>
+                No solo vienes a entrenar… vienes a crecer, a superarte y a construir tu mejor versión.
+            </h2>
+
+            <a href="./register.html" class="cta">Comenzar ahora</a>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Sport Club. Todos los derechos reservados. By Juliet Araya.</p>
+    </footer>
+
+</body>
+</html>
