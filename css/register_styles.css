@@ -1,0 +1,97 @@
+body{
+    margin: 0;
+    min-height: 100vh;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(#97a6ff, #9dd8ff, #ffffff, #f1f1f1);
+    background-repeat: no-repeat;
+}
+
+/* CONTENEDOR */
+.contenedor{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+/* FORMULARIO */
+.formulario{
+    width: 420px;
+    background: rgb(252, 212, 34);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.39),
+                inset 0 0 10px rgba(0, 0, 0, 0.05);
+    border-radius: 10px;
+    padding: 20px;
+}
+
+/* TITULO */
+.formulario h2{
+    text-align: center;
+    color: #f1f1f1;
+    text-shadow: 0px 0px 5px #000;
+    margin-bottom: 20px;
+}
+
+/* LABELS */
+.formulario label{
+    display: block;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+/* INPUTS Y SELECT */
+.formulario input,
+.formulario select{
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #7be5ff;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+/* EFECTO FOCUS */
+.formulario input:focus,
+.formulario select:focus{
+    border-color: #3c8ebd;
+    box-shadow: 0 0 5px rgba(60,142,189,0.5);
+    outline: none;
+}
+
+/* ACCIONES (botón + volver) */
+.acciones{
+    position: relative;
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* BOTON */
+.acciones button{
+    padding: 10px 30px;
+    background-color: #251144;
+    color: gainsboro;
+    border: 2px solid #e4c40f;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: #ffd900 0px 0px 5px;
+}
+
+.acciones button:hover{
+    background-color: #3c8ebd;
+    border: 2px solid #6af5ff;
+}
+
+/* LINK VOLVER */
+.volver{
+    position: absolute;
+    right: 0;
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+}
+
+.volver::before{
+    content: "← ";
+}

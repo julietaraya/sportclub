@@ -1,0 +1,148 @@
+body{
+    margin: 0;
+    min-height: 100vh;
+    font-family: Arial, sans-serif;
+
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+                url('../img/gym.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+header-top{
+    display: block;
+    background: linear-gradient(#00be4f, #8affb7, #9affcd, #00e070);
+    padding: 10px 20px;
+}
+
+.logo{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.logo h1{
+    color: #ffffff;
+    text-shadow: 0px 0px 5px #000;
+}
+
+.logo img{
+    height: 50px;
+}
+
+header-nav{
+    display: block;
+    background: #000000;
+    padding: 10px 20px;
+}
+
+header-nav nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav ul{
+    display: flex;
+    gap: 20px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav a{
+    text-decoration: none;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+.nav-botones {
+    display: flex;
+    gap: 10px;
+}
+
+.nav-botones button {
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+h1{
+    margin: 20px;
+    color: #ffffff;
+    text-shadow: 0px 0px 5px #000000;
+}
+
+h3{
+    margin-left: 20px;
+    color: #ffffff;
+}
+
+main{
+    padding: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+}
+
+section{
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0px 2px 5px rgba(255, 255, 255, 0.1);
+}
+
+.alumnos{
+    grid-column: 1 / 2;
+}
+
+.clases{
+    grid-column: 2 / 3;
+}
+
+.horarios{
+    grid-column: 3 / 4;
+}
+
+ul{
+    padding: 0;
+}
+
+section li{
+    list-style: none;
+    background: #dbecff;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 8px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+button{
+    width: 50%;
+    padding: 10px;
+    background-color: #251144;
+    color: rgb(255, 255, 255);
+    border: 2px solid #e4c40f;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 0 auto;
+    display: block;
+    box-shadow: #ffd900 0px 0px 5px;
+}
+
+button:hover{
+    background-color: #3c8ebd;
+    border: 2px solid #6af5ff;
+}
+
+footer {
+    text-align: center;
+    padding: 10px;
+    background: #000000;
+    margin-top: 20px;
+    color: aliceblue;
+}
