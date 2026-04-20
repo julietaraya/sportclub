@@ -1,4 +1,4 @@
 function logout(){
     localStorage.removeItem("user");
-    window.location.href = "landing_page.html";
+    window.location.href = "index.html";
 }
