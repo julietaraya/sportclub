@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="../img/icon2.png">
+    <title>Recuperar contraseña - Sport Club</title>
+    <link rel="stylesheet" href="./css/recover_styles.css">
+</head>
+<body>
+
+    <div class="contenedor">
+        <div class="formulario">
+
+            <h2>Recuperar contraseña</h2>
+
+    <form onsubmit="mostrarMensaje(event)">
+        <input type="email" placeholder="Ingresa tu correo" required>
+        <button type="submit">Enviar enlace</button>
+    </form>
+
+    <p id="mensaje" style="display:none;">
+        Se ha enviado el enlace correctamente
+    </p>
+    <script>
+        function mostrarMensaje(event) {
+            event.preventDefault();
+
+            document.getElementById("mensaje").style.display = "block";
+        }
+    </script>
+            <a href="./login.html" class="volver">Volver al login</a>
+
+        </div>
+    </div>
+        <footer>
+        <p>&copy; 2026 Sport Club. Todos los derechos reservados. By Juliet Araya.</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="../img/icon2.png">
+    <title>Bienvenido a SportClub</title>
+    <link rel="stylesheet" href="./css/coach_styles.css">
+</head>
+<body>
+    <header-top>
+        <div class="logo">
+            <img src="./img/logo_empresa_letra_v1.png" alt="Logo Sport Club">
+            <h1>DASHBOARD COACH</h1>
+        </div>
+    </header-top>
+    <header-nav>
+            <nav>
+            <ul>
+                <li><a href="#">Inicio</a></li>
+                <li><a href="#">Alumnos</a></li>
+                <li><a href="#">Clases</a></li>
+            </ul>
+
+            <div class="nav-botones">
+                <button>Editar perfil</button>
+                <button onclick="logout()">Cerrar sesión</button>
+
+        <script>
+            function logout(){
+                localStorage.removeItem("user");
+                window.location.href = "landing_page.html";
+            }
+        </script>
+            </div>  
+        </nav>
+    </header-nav>
+
+    <h1>Panel Entrenador</h1>
+    <h3>Bienvenido, Coach [Nombre del Entrenador]</h3>
+
+    <main>
+        <section class="alumnos">
+            <h2>Mis Alumnos</h2>
+
+            <ul>
+                <li>
+                    Juan Pérez - juan@email.com
+                    <button>Ver Progreso</button>
+                </li>
+                <li>
+                    María López - maria@email.com
+                    <button>Ver Progreso</button>
+                </li>
+                <li>
+                    Carlos Díaz - carlos@email.com
+                    <button>Ver Progreso</button>
+                </li>
+            </ul>
+        </section>
+        <section class="clases">
+            <h2>Clases Asignadas</h2>
+
+            <ul>
+                <li>Entrenamiento funcional - Martes 19:00</li>
+                <li>Spinning - Jueves 18:00</li>
+                <li>Yoga - Sábado 10:00</li>
+            </ul>
+        </section>
+
+        <section class="horarios">
+            <h2>Mi Horario</h2>
+
+            <ul>
+                <li>
+                    <span>Lunes: 18:00 - 20:00</span>
+                    <button>Ver Detalle</button>
+                </li>
+                <li>
+                    <span>Martes: 19:00 - 21:00</span>
+                    <button>Ver Detalle</button>
+                </li>
+                <li>
+                    <span>Jueves: 18:00 - 20:00</span>
+                    <button>Ver Detalle</button>
+                </li>
+                <li>
+                    <span>Sábado: 10:00 - 12:00</span>
+                    <button>Ver Detalle</button>
+                </li>
+            </ul>
+        </section>
+        <script>
+            const user = JSON.parse(localStorage.getItem("user"));
+
+            if(!user || user.role !== "coach"){
+                window.location.href = "login.html";
+            }
+        </script>
+
+    </main>
+        <footer>
+        <p>&copy; 2026 Sport Club. Todos los derechos reservados. By Juliet Araya.</p>
+    </footer>
+
+    <script src="../js/session.js"></script>
+
+</body>
+</html>

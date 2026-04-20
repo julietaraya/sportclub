@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="../img/icon2.png">
+    <title>Bienvenido a SportClub</title>
+    <link rel="stylesheet" href="./css/user_styles.css">
+</head>
+<body>
+    <header class="header-top">
+    <div class="logo">
+        <img src="./img/logo_empresa_letra_v1.png" alt="Logo Sport Club">
+        <h1>DASHBOARD USUARIO</h1>
+    </div>
+</header>
+
+    <header class="header-nav">
+        <nav>
+            <ul>
+                <li><a href="#">Inicio</a></li>
+                <li><a href="#">Reservas</a></li>
+                <li><a href="#">Mi Progreso</a></li>
+            </ul>
+
+            <div class="nav-botones">
+                <button>Editar perfil</button>
+                <button onclick="logout()">Cerrar sesión</button>
+
+        <script>
+            function logout(){
+                localStorage.removeItem("user");
+                window.location.href = "login.html";
+            }
+        </script>
+            </div>
+        </nav>
+    </header>
+
+    <h1>Bienvenido a SportClub</h1>
+
+    <main>
+
+        <section class="info-usuario">
+            <h2>Mi Información</h2>
+            <div class="profile_icon">
+                <img src="./img/user_icon.png" alt="Foto de perfil">
+            </div>
+            <p><strong>Nombre:</strong> Juan Pérez</p>
+            <p><strong>Correo:</strong> juan@email.com</p>
+            <p><strong>Objetivos Personales:</strong> Fitness</p>
+        </section>
+
+        <section class="progreso">
+            <h2>Progreso</h2>
+            <p><strong>Peso Inicial:</strong> 80 kg</p>
+            <p><strong>Peso Actual:</strong> 75 kg</p>
+            <p><strong>Peso Objetivo:</strong> 70 kg</p>
+            <p><strong>Último Progreso:</strong> -2 kg en 1 mes</p>
+            <canvas id="graficoProgreso" width="500" height="500"></canvas>
+        </section>
+
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+        <script>
+
+        let pesoInicial = 80;
+        let pesoActual = 75;
+        let pesoObjetivo = 70;
+
+
+        let progreso = pesoInicial - pesoActual;
+        let total = pesoInicial - pesoObjetivo;
+
+
+        let porcentaje = Math.round((progreso / total) * 100);
+
+
+        const ctx = document.getElementById('graficoProgreso');
+
+        new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Progreso', 'Faltante'],
+                datasets: [{
+                    data: [porcentaje, 100 - porcentaje],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                cutout: '70%', // hace la forma de rosca
+                plugins: {
+                    tooltip: {
+                        enabled: true
+                    }
+                }
+            }
+        });
+        </script>
+
+        <section class="reservas">
+            <h2>Mis Reservas</h2>
+
+            <ul>
+                <li>Clase de Crossfit - Lunes 18:00</li>
+                <li>Yoga - Miércoles 19:00</li>
+                <li>Spinning - Viernes 17:00</li>
+            </ul>
+        </section>
+
+        <section class="clases">
+            <h2>Clases Disponibles</h2>
+
+            <div class="lista-clases">
+                <div class="clase">
+                    <h3>Yoga</h3>
+                    <p>Relajación y flexibilidad</p> 
+                    <button><a>Reservar</a></button>
+                </div>
+
+                <div class="clase">
+                    <h3>Funcional</h3>
+                    <p>Entrenamiento completo</p>
+                    <button><a>Reservar</a></button>
+                </div>
+
+                <div class="clase">
+                    <h3>Spinning</h3>
+                    <p>Alta intensidad en bicicleta</p>
+                    <button><a>Reservar</a></button>
+                </div>
+            </div>
+        </section>
+
+    </main>
+    <script>
+    const user = JSON.parse(localStorage.getItem("user"));
+
+    if(!user || user.role !== "user"){
+        window.location.href = "login.html";
+    }
+    </script>
+
+    <footer>
+        <p>&copy; 2026 Sport Club. Todos los derechos reservados. by Juliet Araya.</p>
+    </footer>
+    <script src="../js/session.js"></script>
+
+</body>
+</html>

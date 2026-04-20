@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="../img/icon2.png">
+    <title>Registro - Sport Club</title>
+    <link rel="stylesheet" href="./css/register_styles.css">
+</head>
+<body>
+
+<div class="contenedor">
+
+    <div class="formulario">
+
+        <h2>Registro de Usuario</h2>
+
+        <form>
+            <label>Correo electrónico *</label>
+            <input type="email" placeholder="Ingresa tu correo" required>
+
+            <label>Contraseña *</label>
+            <input type="password" placeholder="Ingresa tu contraseña" required>
+
+            <label>Nombre</label>
+            <input type="text" placeholder="Tu nombre">
+
+            <label>Edad</label>
+            <input type="number" min="1" placeholder="Tu edad">
+
+            <label>¿Practica deporte?</label>
+            <select>
+                <option value="">Seleccionar</option>
+                <option>Sí</option>
+                <option>No</option>
+            </select>
+
+            <label>Tipo de deporte</label>
+            <input type="text" placeholder="Ej: fútbol, gym, running">
+
+            <label>Objetivo personal</label>
+            <input type="text" placeholder="Ej: bajar peso, ganar músculo">
+
+            <label>Nivel</label>
+            <select>
+                <option value="">Seleccionar</option>
+                <option>Principiante</option>
+                <option>Intermedio</option>
+                <option>Avanzado</option>
+            </select>
+            <div class="acciones">
+                <button type="submit">Registrarse</button>
+
+                <a href="./landing_page.html" class="volver">Volver</a>
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+</body>
+</html>

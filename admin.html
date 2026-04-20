@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="../img/icon2.png">
+    <title>Bienvenido a SportClub</title>
+    <link rel="stylesheet" href="./css/admin_styles.css">
+</head>
+<body>
+    <header class="header-top">
+        <div class="logo">
+            
+            <img src="./img/logo_empresa_letra_v1.png" alt="Logo Sport Club">
+            <h1>DASHBOARD ADMIN</h1>
+        </div>
+    </header>
+        <nav>
+    <ul>
+        <li><a href="#">Usuarios</a></li>
+        <li><a href="#">Estadísticas</a></li>
+        <li><a href="#">Configuración</a></li>
+    </ul>
+
+    <div class="nav-botones">
+        <button>Editar perfil</button>
+        <button onclick="logout()">Cerrar sesión</button>
+
+        <script>
+            function logout(){
+                localStorage.removeItem("user");
+                window.location.href = "landing_page.html";
+            }
+        </script>
+    </div>
+    </nav>
+    <main>
+        <section class="gestion-usuarios">
+            <h2>Gestión de Usuarios</h2>
+            <div class="buscador">
+        <input type="text" id="buscar" placeholder="Escribe el nombre o apellido...">
+        <button>Buscar</button>
+        </div>
+            <ul>
+    <li>
+        Juan Pérez - Usuario
+        <button>Editar</button>
+    </li>
+    <li>
+        María López - Coach
+        <button>Editar</button>
+    </li>
+    <li>
+        Admin Principal - Administrador
+        <button>Editar</button>
+    </li>
+    </ul>
+        </section>
+
+        <section class="estadisticas">
+            <h2>Estadísticas</h2>
+
+            <p><strong>Total usuarios:</strong> 120</p>
+            <p><strong>Total clases:</strong> 35</p>
+        </section>
+
+        <table border="1">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Email</th>
+                <th>Rol</th>
+                <th>Acción</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Juan Pérez</td>
+                <td>juan@email.com</td>
+                <td>Usuario</td>
+                <td><button>Editar</button></td>
+            </tr>
+            <tr>
+                <td>María López</td>
+                <td>maria@email.com</td>
+                <td>Coach</td>
+                <td><button>Editar</button></td>
+            </tr>
+            <tr>
+                <td>Carlos Díaz</td>
+                <td>carlos@email.com</td>
+                <td>Administrador</td>
+                <td><button>Editar</button></td>
+
+            </tr>
+        </tbody>
+        </table>
+
+        <section class="panel-control">
+            <h2>Panel de Control</h2>
+
+            <div class="cards">
+
+                <div class="card">
+                    <h3>Usuarios activos</h3>
+                    <p>85</p>
+                </div>
+
+                <div class="card">
+                    <h3>Clases del día</h3>
+                    <p>8</p>
+                </div>
+
+                <div class="card">
+                    <h3>Nuevos registros</h3>
+                    <p>12</p>
+                </div>
+
+            </div>
+        </section>
+
+        <script>
+            const user = JSON.parse(localStorage.getItem("user"));
+
+            if(!user || user.role !== "admin"){
+                window.location.href = "login.html";
+            }
+        </script>
+
+    </main>
+        <footer>
+        <p>&copy; 2026 Sport Club. Todos los derechos reservados. By Juliet Araya.</p>
+    </footer>
+
+    <script src="../js/session.js"></script>
+</body>
+</html>
