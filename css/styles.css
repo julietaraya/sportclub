@@ -1,0 +1,333 @@
+/*1. VARIABLES CSS (Custom Properties)*/
+    :root {
+    /* Paleta de colores */
+    --primary: #0d6efd;
+    --primary-dark: #0a58ca;
+    --primary-light: #cfe2ff;
+    --success: #198754;
+    --danger: #dc3545;
+    --warning: #ffc107;
+    --bg-page: #f5f7fb;
+    --bg-card: #ffffff;
+    --text-dark: #1f2937;
+    --text-muted: #6b7280;
+    --border: #e5e7eb;
+    /* Espaciado consistente (escala) */
+    --space-xs: 0.5rem;
+    --space-sm: 0.75rem;
+    --space-md: 1rem;
+    --space-lg: 1.5rem;
+    --space-xl: 2rem;
+    /* Bordes redondeados */
+    --radius-sm: 0.375rem;
+    --radius-md: 0.5rem;
+    --radius-lg: 0.75rem;
+    /* Sombras */
+    --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
+    --shadow-md: 0 1px 3px rgba(0,0,0,0.05), 0 1px 2px rgba(0,0,0,0.1);
+    --shadow-lg: 0 4px 6px rgba(0,0,0,0.07), 0 2px 4px rgba(0,0,0,0.1);
+    /* Layout */
+    --sidebar-width: 240px;
+    --navbar-height: 56px;
+    }
+    /* Reset / base */
+    body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: var(--bg-page);
+    color: var(--text-dark);
+    line-height: 1.5;
+    }
+    * {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    }
+
+    /*PÁGINAS DE AUTENTICACIÓN*/
+    .auth-page {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    padding: var(--space-md);
+    }
+    .auth-card {
+    width: 100%;
+    max-width: 420px;
+    background: var(--bg-card);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+    padding: var(--space-xl);
+    }
+    .auth-card-wide {
+    max-width: 720px; /* registro tiene más campos */
+    }
+    .auth-logo {
+    width: 200px;
+    height: auto;
+    }
+
+    /*LAYOUT DE DASHBOARDS*/
+    .dashboard-body {
+    background: var(--bg-page);
+    }
+    /* Grid: sidebar fijo a la izquierda + contenido flexible */
+    .dashboard-layout {
+    display: grid;
+    grid-template-columns: var(--sidebar-width) 1fr;
+    min-height: calc(100vh - var(--navbar-height));
+    }
+    .sidebar {
+    background: var(--bg-card);
+    border-right: 1px solid var(--border);
+    padding: var(--space-lg) var(--space-md);
+    min-height: 100%;
+    }
+    .sidebar .nav-link {
+    color: var(--text-dark);
+    padding: var(--space-sm) var(--space-md);
+    border-radius: var(--radius-sm);
+    margin-bottom: 4px;
+    transition: all 0.2s ease;
+    }
+    .sidebar .nav-link:hover {
+    background: var(--bg-page);
+    color: var(--primary);
+    }
+    /* Opción "activa": el módulo de la página actual */
+    .sidebar .nav-link.active {
+    background: var(--primary-light);
+    color: var(--primary);
+    font-weight: 600;
+    }
+    .sidebar .nav-link i {
+    margin-right: var(--space-xs);
+    }
+    .main-content {
+    padding: var(--space-xl);
+    }
+
+    /*CARDS (contenedores)*/
+    .card {
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-md);
+    transition: box-shadow 0.2s ease;
+    }
+    .card:hover {
+    box-shadow: var(--shadow-lg);
+
+    }
+    .card-header {
+    background: var(--bg-card);
+    border-bottom: 1px solid var(--border);
+    padding: var(--space-md) var(--space-lg);
+    }
+    /*BOTONES (sobrescribir Bootstrap)*/
+    .btn {
+    border-radius: var(--radius-sm);
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    transition: all 0.2s ease;
+    }
+    .btn-primary {
+    background: var(--primary);
+    border-color: var(--primary);
+    }
+    .btn-primary:hover {
+    background: var(--primary-dark);
+    border-color: var(--primary-dark);
+    transform: translateY(-1px); /* sutil elevación al hover */
+    }
+    /* Botones cuadrados de acción en la tabla */
+    .table .btn-sm {
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    }
+
+    /* --------------------------------------------------------
+    FORMULARIOS
+    -------------------------------------------------------- */
+    .form-label {
+    font-weight: 500;
+    color: var(--text-dark);
+    margin-bottom: 0.25rem;
+    }
+    .form-control,
+    .form-select {
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 0.5rem 0.75rem;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+    /* Estado focus: aro azul suave */
+    .form-control:focus,
+    .form-select:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px var(--primary-light);
+    }
+    /* Estado error: borde rojo (Bootstrap usa is-invalid) */
+    .form-control.is-invalid {
+    border-color: var(--danger);
+    }
+    .invalid-feedback {
+    font-size: 0.875rem;
+    color: var(--danger);
+    }
+
+    /* --------------------------------------------------------
+    TABLAS
+    -------------------------------------------------------- */
+    .table {
+    margin-bottom: 0;
+    }
+    .table > :not(caption) > * > * {
+    padding: 0.875rem 1rem;
+    }
+    .table thead {
+    background: var(--bg-page);
+    }
+    .table thead th {
+    font-weight: 600;
+    font-size: 0.875rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.025em;
+    border-bottom: 1px solid var(--border);
+    }
+    .table-hover tbody tr:hover {
+    background: var(--bg-page);
+    }
+
+    /* --------------------------------------------------------
+    BADGES (rol de usuario)
+    -------------------------------------------------------- */
+    .badge {
+    font-weight: 500;
+    padding: 0.35em 0.65em;
+    border-radius: var(--radius-sm);
+    }
+
+    /* --------------------------------------------------------
+    PERFIL: avatar circular
+    -------------------------------------------------------- */
+    .profile-avatar {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: var(--primary-light);
+    color: var(--primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 4rem;
+    }
+    /* --------------------------------------------------------
+    RESPONSIVE: pantallas chicas
+    -------------------------------------------------------- */
+    @media (max-width: 991.98px) {
+    .dashboard-layout {
+    grid-template-columns: 1fr; /* sidebar pasa a fila */
+    }
+    .sidebar {
+    display: none;
+    }
+    .sidebar.show {
+    display: block;
+    position: fixed;
+    top: var(--navbar-height);
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    }
+    .main-content {
+    padding: var(--space-md);
+    }
+    }
+    /* --------------------------------------------------------
+    ANIMACIONES SUTILES
+    -------------------------------------------------------- */
+    @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+    }
+    .card,
+    .alert {
+    animation: fadeIn 0.3s ease;
+    }
+
+    
+    /*LANDING PAGE (index.html)*/
+    .landing-page {
+    background: var(--bg-page);
+    }
+
+    .landing-navbar {
+    position: sticky;        
+    top: 0;
+    z-index: 100;
+    }
+
+    .hero-section {
+    padding: 5rem 0;
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+    }
+
+    .hero-icon-wrap {
+    width: 280px;
+    height: 280px;
+    margin: 0 auto;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--primary-light), white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow-lg);
+    }
+
+    .hero-icon-wrap i {
+    font-size: 8rem;
+    color: var(--primary);
+    }
+
+    .features-section {
+    padding: 4rem 0;
+    background: white;
+    }
+
+    .feature-icon {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: var(--primary-light);
+    color: var(--primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.75rem;
+    }
+
+    .landing-footer {
+    padding: 2rem 0;
+    background: var(--bg-page);
+    border-top: 1px solid var(--border);
+    }
+
+
+    
+    /*ÍCONOS DE ESTADÍSTICAS EN DASHBOARDS*/
+    .stat-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    }

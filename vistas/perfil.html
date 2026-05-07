@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Perfil - SportClub</title>
+    <link rel="icon" type="image/png" href="../assets/img/icon2.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body class="dashboard-body">
+    <script src="../js/api.js"></script>
+    <script>
+        if (!localStorage.getItem("token")) {
+            window.location.href = "./login.html";
+        }
+    </script>
+
+    <nav class="navbar navbar-dark bg-primary px-3">
+        <span class="navbar-brand mb-0 h5">Sistema Deportivo</span>
+        <button class="btn btn-outline-light btn-sm btn-logout">
+            <i class="bi bi-box-arrow-right"></i> Salir
+        </button>
+    </nav>
+
+    <main class="container py-4">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb small">
+                <li class="breadcrumb-item"><a href="#" id="linkInicio">Inicio</a></li>
+                <li class="breadcrumb-item active">Perfil</li>
+            </ol>
+        </nav>
+
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <div>
+                <h1 class="h3 mb-1">
+                    <i class="bi bi-person-circle text-primary"></i> Mi Perfil
+                </h1>
+                <p class="text-muted mb-0">Gestiona tu información personal</p>
+            </div>
+            <button class="btn btn-primary" id="btnEditarPerfil">
+                <i class="bi bi-pencil"></i> Editar Perfil
+            </button>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4 mb-4">
+                <div class="card shadow-sm text-center">
+                    <div class="card-body">
+                        <div class="profile-avatar mx-auto mb-3">
+                            <i class="bi bi-person"></i>
+                        </div>
+                        <h5 class="mb-1" id="perfilNombre">—</h5>
+                        <p class="text-muted small mb-2" id="perfilSubtitulo">Usuario del Sistema</p>
+                        <span id="perfilBadgeRol"></span>
+                    </div>
+                    <ul class="list-group list-group-flush text-start small">
+                        <li class="list-group-item">
+                            <i class="bi bi-envelope text-muted me-2"></i>
+                            <span id="perfilEmailLista">—</span>
+                        </li>
+                        <li class="list-group-item">
+                            <i class="bi bi-calendar text-muted me-2"></i>
+                            Nacimiento: <span id="perfilNacimiento">—</span>
+                        </li>
+                        <li class="list-group-item">
+                            <i class="bi bi-shield text-muted me-2"></i>
+                            Rol: <span id="perfilRolLista">—</span>
+                        </li>
+                        <li class="list-group-item">
+                            <i class="bi bi-clock text-muted me-2"></i>
+                            Registro: <span id="perfilRegistro">—</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-md-8">
+                <div class="card shadow-sm mb-4">
+                    <div class="card-header bg-white">
+                        <h5 class="mb-0">
+                            <i class="bi bi-info-circle text-primary"></i> Información Personal
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        <form id="formPerfil" novalidate>
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="full_name" class="form-label">
+                                        Nombre completo <span class="text-danger">*</span>
+                                    </label>
+                                    <input type="text" class="form-control" id="full_name" disabled>
+                                    <div class="invalid-feedback" id="errorFull_name"></div>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="email" class="form-label">
+                                        Email <span class="text-danger">*</span>
+                                    </label>
+                                    <input type="email" class="form-control" id="email" disabled>
+                                    <small class="text-muted">El email no puede modificarse</small>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="birth_date" class="form-label">Fecha de nacimiento</label>
+                                    <input type="date" class="form-control" id="birth_date" disabled>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="favorite_sport" class="form-label">Deporte favorito</label>
+                                    <input type="text" class="form-control" id="favorite_sport" disabled>
+                                </div>
+                                <div class="col-12 mb-3">
+                                    <label for="metadata" class="form-label">
+                                        Otros / Metadata <small class="text-muted">(intereses, habilidades)</small>
+                                    </label>
+                                    <textarea class="form-control" id="metadata" rows="3" disabled></textarea>
+                                </div>
+                            </div>
+                            <div id="alertaPerfil" class="alert alert-success d-none" role="alert"></div>
+                            <div class="d-flex justify-content-end gap-2 d-none" id="botonesPerfil">
+                                <button type="button" class="btn btn-secondary" id="btnCancelarPerfil">
+                                    Cancelar
+                                </button>
+                                <button type="submit" class="btn btn-success">
+                                    <i class="bi bi-check-lg"></i> Guardar cambios
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="card shadow-sm">
+                    <div class="card-header bg-white">
+                        <h5 class="mb-0">
+                            <i class="bi bi-shield-lock text-primary"></i> Cambiar Contraseña
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        <form id="formPassword" novalidate>
+                            <div class="row">
+                                <div class="col-md-4 mb-3">
+                                    <label for="current_password" class="form-label">
+                                        Contraseña actual *
+                                    </label>
+                                    <input type="password" class="form-control" id="current_password" required>
+                                    <div class="invalid-feedback" id="errorCurrent_password"></div>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <label for="new_password" class="form-label">Nueva contraseña *</label>
+                                    <input type="password" class="form-control" id="new_password" required>
+                                    <div class="invalid-feedback" id="errorNew_password"></div>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <label for="new_password2" class="form-label">Confirmar nueva *</label>
+                                    <input type="password" class="form-control" id="new_password2" required>
+                                    <div class="invalid-feedback" id="errorNew_password2"></div>
+                                </div>
+                            </div>
+                            <div class="alert alert-info small">
+                                <i class="bi bi-info-circle"></i>
+                                La contraseña debe tener al menos 8 caracteres.
+                            </div>
+                            <div id="alertaPassword" class="alert alert-danger d-none"></div>
+                            <div class="d-flex justify-content-end">
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="bi bi-shield-check"></i> Actualizar contraseña
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/auth.js"></script>
+    <script src="../js/perfil.js"></script>
+</body>
+</html>

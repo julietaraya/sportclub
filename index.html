@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SportClub - Sistema Deportivo</title>
+    <link rel="icon" type="image/png" href="assets/img/icon2.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="landing-page">
+    <script>
+        (function() {
+            const u = JSON.parse(localStorage.getItem("user") || "null");
+            const t = localStorage.getItem("token");
+            if (t && u) {
+                const rutas = {
+                    admin: "vistas/admin.html",
+                    coach: "vistas/coach.html",
+                    user: "vistas/user.html"
+                };
+                window.location.href = rutas[u.role] || "vistas/user.html";
+            }
+        })();
+    </script>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm landing-navbar">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="index.html">
+                <i class="bi bi-trophy-fill text-primary"></i> SportClub
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuPrincipal">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="menuPrincipal">
+                <a href="vistas/login.html" class="btn btn-outline-primary me-2">
+                    <i class="bi bi-box-arrow-in-right"></i> Iniciar Sesión
+                </a>
+                <a href="vistas/registro.html" class="btn btn-primary">
+                    <i class="bi bi-person-plus"></i> Registrarme
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 text-center text-lg-start">
+                    <h1 class="display-4 fw-bold mb-3">
+                        Tu club deportivo, <span class="text-primary">en un solo lugar</span>
+                    </h1>
+                    <p class="lead text-muted mb-4">
+                        Gestiona tus entrenamientos, conecta con coaches y sigue tu progreso deportivo desde cualquier dispositivo.
+                    </p>
+                    <div class="d-flex gap-2 justify-content-center justify-content-lg-start">
+                        <a href="vistas/registro.html" class="btn btn-primary btn-lg">
+                            Comenzar ahora <i class="bi bi-arrow-right"></i>
+                        </a>
+                        <a href="vistas/login.html" class="btn btn-outline-primary btn-lg">
+                            Ya tengo cuenta
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-6 text-center mt-5 mt-lg-0">
+                    <div class="hero-icon-wrap">
+                        <i class="bi bi-trophy-fill"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="features-section">
+        <div class="container">
+            <h2 class="text-center mb-5 fw-bold">¿Qué puedes hacer en SportClub?</h2>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card h-100 border-0 shadow-sm text-center p-4">
+                        <div class="feature-icon mx-auto mb-3">
+                            <i class="bi bi-person-circle"></i>
+                        </div>
+                        <h5 class="fw-bold">Gestiona tu perfil</h5>
+                        <p class="text-muted mb-0">
+                            Personaliza tus datos, tus deportes favoritos y mantén tu información actualizada.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100 border-0 shadow-sm text-center p-4">
+                        <div class="feature-icon mx-auto mb-3">
+                            <i class="bi bi-people-fill"></i>
+                        </div>
+                        <h5 class="fw-bold">Conecta con coaches</h5>
+                        <p class="text-muted mb-0">
+                            Encuentra entrenadores certificados según tu deporte y nivel de experiencia.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100 border-0 shadow-sm text-center p-4">
+                        <div class="feature-icon mx-auto mb-3">
+                            <i class="bi bi-graph-up-arrow"></i>
+                        </div>
+                        <h5 class="fw-bold">Sigue tu progreso</h5>
+                        <p class="text-muted mb-0">
+                            Lleva el control de tus entrenamientos y mira cómo avanzas semana a semana.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="landing-footer">
+        <div class="container text-center text-muted small">
+            © 2026 SportClub - Desarrollado por Juliet Araya Evaluación TI3031
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

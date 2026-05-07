@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Dashboard - SportClub</title>
+    <link rel="icon" type="image/png" href="../assets/img/icon2.png">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+            rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css"
+            rel="stylesheet">
+    <link rel="stylesheet" href="../css/styles.css">
+    </head>
+
+    <body class="dashboard-body">
+    <script>
+        const __u = JSON.parse(localStorage.getItem("user") || "null");
+        const __t = localStorage.getItem("token");
+        if (!__t || !__u) {
+        window.location.href = "./login.html";
+        } else if (__u.role !== "user") {
+        const rutas = { admin: "./admin.html", coach: "./coach.html" };
+        window.location.href = rutas[__u.role] || "./login.html";
+        }
+    </script>
+    <nav class="navbar navbar-dark bg-primary px-3">
+        <div class="d-flex align-items-center">
+        <button class="btn btn-link text-white p-0 me-3 d-lg-none" id="toggleSidebar">
+            <i class="bi bi-list fs-4"></i>
+        </button>
+        <span class="navbar-brand mb-0 h5">
+            <i class="bi bi-trophy-fill"></i> SportClub
+        </span>
+        </div>
+
+        <div class="dropdown">
+        <button class="btn btn-link text-white text-decoration-none dropdown-toggle"
+                data-bs-toggle="dropdown">
+            <i class="bi bi-person-circle"></i>
+            <span id="navUserName">Usuario</span>
+        </button>
+        <ul class="dropdown-menu dropdown-menu-end">
+            <li><a class="dropdown-item" href="./perfil.html">
+            <i class="bi bi-person"></i> Mi perfil
+            </a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item btn-logout" href="#">
+            <i class="bi bi-box-arrow-right"></i> Cerrar sesión
+            </a></li>
+        </ul>
+        </div>
+    </nav>
+
+    <div class="dashboard-layout">
+
+        <aside class="sidebar" id="sidebar">
+        <ul class="nav flex-column">
+            <li class="nav-item">
+            <a class="nav-link active" href="./user.html">
+                <i class="bi bi-house-door"></i> Inicio
+            </a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link" href="./perfil.html">
+                <i class="bi bi-person"></i> Mi Perfil
+            </a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link" href="#">
+                <i class="bi bi-trophy"></i> Mis Deportes
+            </a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link" href="#">
+                <i class="bi bi-calendar-event"></i> Entrenamientos
+            </a>
+            </li>
+            <li class="nav-item mt-3">
+            <a class="nav-link text-danger btn-logout" href="#">
+                <i class="bi bi-box-arrow-right"></i> Cerrar Sesión
+            </a>
+            </li>
+        </ul>
+        </aside>
+
+        <main class="main-content">
+
+        <div class="mb-4">
+            <h1 class="h3 mb-1">
+            <i class="bi bi-house-door text-primary"></i>
+            Bienvenido, <span id="userWelcomeName">usuario</span>
+            </h1>
+            <p class="text-muted mb-0">Este es tu panel personal en SportClub</p>
+        </div>
+        <div class="row g-3 mb-4">
+            <div class="col-sm-6 col-lg-3">
+            <div class="card border-0 shadow-sm h-100">
+                <div class="card-body">
+                <div class="d-flex justify-content-between align-items-start">
+                    <div>
+                    <p class="text-muted small mb-1">Entrenamientos</p>
+                    <h3 class="mb-0">12</h3>
+                    </div>
+                    <div class="stat-icon bg-primary-subtle text-primary">
+                    <i class="bi bi-activity"></i>
+                    </div>
+                </div>
+                </div>
+            </div>
+            </div>
+
+            <div class="col-sm-6 col-lg-3">
+            <div class="card border-0 shadow-sm h-100">
+                <div class="card-body">
+                <div class="d-flex justify-content-between align-items-start">
+                    <div>
+                    <p class="text-muted small mb-1">Deportes activos</p>
+                    <h3 class="mb-0">3</h3>
+                    </div>
+                    <div class="stat-icon bg-success-subtle text-success">
+                    <i class="bi bi-trophy"></i>
+                    </div>
+                </div>
+                </div>
+            </div>
+            </div>
+
+            <div class="col-sm-6 col-lg-3">
+            <div class="card border-0 shadow-sm h-100">
+                <div class="card-body">
+                <div class="d-flex justify-content-between align-items-start">
+                    <div>
+                    <p class="text-muted small mb-1">Próxima clase</p>
+                    <h3 class="mb-0">Lun</h3>
+                    </div>
+                    <div class="stat-icon bg-warning-subtle text-warning">
+                    <i class="bi bi-calendar-check"></i>
+                    </div>
+                </div>
+                </div>
+            </div>
+            </div>
+
+            <div class="col-sm-6 col-lg-3">
+            <div class="card border-0 shadow-sm h-100">
+                <div class="card-body">
+                <div class="d-flex justify-content-between align-items-start">
+                    <div>
+                    <p class="text-muted small mb-1">Logros</p>
+                    <h3 class="mb-0">5</h3>
+                    </div>
+                    <div class="stat-icon bg-info-subtle text-info">
+                    <i class="bi bi-award"></i>
+                    </div>
+                </div>
+                </div>
+            </div>
+            </div>
+        </div>
+
+        <div class="row g-3">
+            <div class="col-lg-8">
+            <div class="card border-0 shadow-sm">
+                <div class="card-header bg-white">
+                <h5 class="mb-0">
+                    <i class="bi bi-info-circle text-primary"></i> Tu información
+                </h5>
+                </div>
+                <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                    <small class="text-muted d-block">Nombre completo</small>
+                    <strong id="infoNombre">—</strong>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                    <small class="text-muted d-block">Email</small>
+                    <strong id="infoEmail">—</strong>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                    <small class="text-muted d-block">Rol</small>
+                    <span id="infoRol"></span>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                    <small class="text-muted d-block">Sesión iniciada</small>
+                    <strong id="infoFecha">—</strong>
+                    </div>
+                </div>
+                <a href="./perfil.html" class="btn btn-outline-primary">
+                    <i class="bi bi-pencil"></i> Editar mi perfil
+                </a>
+                </div>
+            </div>
+            </div>
+
+            <div class="col-lg-4">
+            <div class="card border-0 shadow-sm">
+                <div class="card-header bg-white">
+                <h5 class="mb-0">
+                    <i class="bi bi-lightning text-primary"></i> Accesos rápidos
+                </h5>
+                </div>
+                <div class="list-group list-group-flush">
+                <a href="./perfil.html" class="list-group-item list-group-item-action">
+                    <i class="bi bi-person text-muted me-2"></i> Editar perfil
+                </a>
+                <a href="#" class="list-group-item list-group-item-action">
+                    <i class="bi bi-key text-muted me-2"></i> Cambiar contraseña
+                </a>
+                <a href="#" class="list-group-item list-group-item-action btn-logout">
+                    <i class="bi bi-box-arrow-right text-muted me-2"></i> Cerrar sesión
+                </a>
+                </div>
+            </div>
+            </div>
+        </div>
+        </main>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/api.js"></script>
+    <script src="../js/auth.js"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+        const usuario = obtenerUsuario();
+        if (!usuario) return;
+
+        const primerNombre = (usuario.full_name || "Usuario").split(" ")[0];
+        const nombreCapitalizado = primerNombre.charAt(0).toUpperCase() +
+                                    primerNombre.slice(1).toLowerCase();
+
+        document.getElementById("navUserName").textContent = nombreCapitalizado;
+        document.getElementById("userWelcomeName").textContent = nombreCapitalizado;
+        document.getElementById("infoNombre").textContent = usuario.full_name || "—";
+        document.getElementById("infoEmail").textContent =
+            (usuario.email || "—").toLowerCase();
+
+        const colores = {
+            admin: "bg-danger",
+            coach: "bg-primary",
+            user:  "bg-success"
+        };
+        const claseColor = colores[usuario.role] || "bg-secondary";
+        document.getElementById("infoRol").innerHTML =
+            `<span class="badge ${claseColor}">${usuario.role}</span>`;
+
+        const ahora = new Date();
+        const dd = String(ahora.getDate()).padStart(2, "0");
+        const mm = String(ahora.getMonth() + 1).padStart(2, "0");
+        const yyyy = ahora.getFullYear();
+        const hh = String(ahora.getHours()).padStart(2, "0");
+        const min = String(ahora.getMinutes()).padStart(2, "0");
+        document.getElementById("infoFecha").textContent =
+            `${dd}/${mm}/${yyyy} ${hh}:${min}`;
+        });
+
+        const btnToggle = document.getElementById("toggleSidebar");
+        if (btnToggle) {
+        btnToggle.addEventListener("click", () => {
+            document.getElementById("sidebar").classList.toggle("show");
+        });
+        }
+    </script>
+    </body>
+    </html>
