@@ -43,7 +43,7 @@ function pintarPerfil(u) {
     document.getElementById("email").value = (u.email || "").toLowerCase();
     document.getElementById("birth_date").value = u.birth_date ? u.birth_date.split("T")[0] : "";
     document.getElementById("favorite_sport").value = u.favorite_sport || "";
-    document.getElementById("metadata").value = u.metadata || "";
+    document.getElementById("metadata").value = (typeof u.metadata === 'string' ? u.metadata : '') || "";
 }
 function conectarBotonesPerfil() {
     document.getElementById("btnEditarPerfil").addEventListener("click", activarEdicion);
