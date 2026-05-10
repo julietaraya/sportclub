@@ -1,0 +1,19 @@
+.hero-with-bg {
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-with-bg::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.842)), url('../assets/img/gym.jpg') center / cover no-repeat;
+    opacity: 0.8;
+    z-index: -1;
+    filter: blur(2px);
+}
+
+.lead.text-dark.mb-4 {
+    font-weight: 400;
+    text-shadow: 2px 2px 15px rgba(0, 0, 0, 0.548);
+}
