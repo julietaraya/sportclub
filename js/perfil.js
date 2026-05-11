@@ -75,13 +75,17 @@ function desactivarEdicion() {
 }
 async function guardarPerfil(evento) {
     evento.preventDefault();
-    document.getElementById("full_name").classList.remove("is-invalid");
+    limpiarErroresPerfil();
 
+    const metadataValue = document.getElementById("metadata").value;
+    const birthDateValue = document.getElementById("birth_date").value;
+    const sportValue = document.getElementById("favorite_sport").value.trim();
+    
     const datos = {
         full_name: document.getElementById("full_name").value.trim(),
-        birth_date: document.getElementById("birth_date").value || null,
-        favorite_sport: document.getElementById("favorite_sport").value.trim(),
-        metadata: document.getElementById("metadata").value.trim()
+        birth_date: birthDateValue ? birthDateValue : null,
+        favorite_sport: sportValue ? sportValue : null,
+        metadata: metadataValue ? metadataValue : null
     };
 
     if (!datos.full_name) {
@@ -90,6 +94,7 @@ async function guardarPerfil(evento) {
     }
 
     try {
+        console.log("Enviando datos:", JSON.stringify(datos, null, 2));
         const actualizado = await apiActualizarMiPerfil(datos);
         perfilOriginal = actualizado;
         guardarUsuario(actualizado);
@@ -101,6 +106,7 @@ async function guardarPerfil(evento) {
         alerta.classList.remove("d-none");
         setTimeout(() => alerta.classList.add("d-none"), 3000);
     } catch (error) {
+        console.error("Error en guardarPerfil:", error);
         mostrarToast("Error al guardar: " + error.message, "danger");
     }
 }
@@ -108,9 +114,9 @@ async function cambiarPassword(evento) {
     evento.preventDefault();
     limpiarErroresPassword();
 
-    const current_password = document.getElementById("current_password").value;
-    const new_password = document.getElementById("new_password").value;
-    const new_password2 = document.getElementById("new_password2").value;
+    const current_password = document.getElementById("current_password").value.trim();
+    const new_password = document.getElementById("new_password").value.trim();
+    const new_password2 = document.getElementById("new_password2").value.trim();
 
     let hayErrores = false;
     if (!current_password) {
@@ -131,10 +137,17 @@ async function cambiarPassword(evento) {
     if (hayErrores) return;
 
     try {
-        await apiCambiarPassword({ current_password, new_password });
+        const datosPassword = { 
+            current_password: current_password,
+            new_password: new_password 
+        };
+        console.log("Enviando cambio de contraseña:", JSON.stringify(datosPassword, null, 2));
+        await apiCambiarPassword(datosPassword);
         document.getElementById("formPassword").reset();
         mostrarToast("Contraseña actualizada correctamente", "success");
     } catch (error) {
+        console.error("Error al cambiar contraseña:", error);
+        console.error("Datos enviados:", { current_password, new_password });
         document.getElementById("alertaPassword").textContent = error.message;
         document.getElementById("alertaPassword").classList.remove("d-none");
     }
@@ -145,6 +158,14 @@ function limpiarErroresPassword() {
         document.getElementById(id).classList.remove("is-invalid");
     });
     document.getElementById("alertaPassword").classList.add("d-none");
+}
+
+function limpiarErroresPerfil() {
+    ["full_name", "birth_date", "favorite_sport", "metadata"].forEach(id => {
+        const input = document.getElementById(id);
+        if (input) input.classList.remove("is-invalid");
+    });
+    document.getElementById("alertaPerfil").classList.add("d-none");
 }
 function badgeRol(rol) {
     const colores = {
